@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { AddTaskComponent } from './shared/components/molecules/add-task/add-task.component';
+import { TaskListComponent } from './shared/components/molecules/task-list/task-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [AddTaskComponent, TaskListComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'todo-app';
+  constructor() {}
 }

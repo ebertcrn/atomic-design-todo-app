@@ -12,9 +12,7 @@ export class StorageService {
   }
 
   setItem(key: string, value: TaskModel[]): void {
-    const existingItems: TaskModel[] = this.getItem(key) || [];
-    const updatedItems: TaskModel[] = [...existingItems, ...value];
-    this.storage.setItem(key, JSON.stringify(updatedItems));
+    this.storage.setItem(key, JSON.stringify(value));
   }
 
   getItem(key: string): TaskModel[] | null {

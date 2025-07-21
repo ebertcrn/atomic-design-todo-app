@@ -1,1 +1,18 @@
-composto pelo componente checkbox + descricao do item
+<div *ngIf="!task.isCompleted" class="task-item">
+  <ng-container *ngIf="editingTaskId === task.id && form; else viewMode">
+    <app-task-item-edit
+      [form]="form"
+      [task]="task"
+      (onCancelEdit)="cancelEdit()"
+    ></app-task-item-edit>
+  </ng-container>
+
+  <ng-template #viewMode>
+    <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
+    {{ task.name }}
+    <app-button
+      [icon]="'edit'"
+      (onClickButton)="openTaskEdit(task)"
+    ></app-button>
+  </ng-template>
+</div>

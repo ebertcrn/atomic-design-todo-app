@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
+  @Input({ required: true }) icon!: string;
+  @Input() isDisabled = false;
+
   @Output() onClickButton = new EventEmitter<void>();
 
   constructor() {}

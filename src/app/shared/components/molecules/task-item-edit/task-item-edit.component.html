@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+  <app-input [control]="editingTaskCtrl"></app-input>
+  <app-button [icon]="'close'" (onClickButton)="cancelEdit()"></app-button>
+  <app-button
+    [icon]="'check'"
+    [isDisabled]="editingTaskCtrl.invalid"
+    (onClickButton)="saveTaskEdit(task)"
+  ></app-button>
+</form>

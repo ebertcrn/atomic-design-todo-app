@@ -1,8 +1,11 @@
-<div class="container">
+<div *ngIf="taskList.length > 0; else noTasks" class="container">
   <ng-container *ngFor="let task of taskList; let i = index">
-    <div *ngIf="!task.isCompleted" class="task-item">
-      <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
-      {{ task.name }}
-    </div>
+    <app-task-item [task]="task" [form]="form"></app-task-item>
   </ng-container>
 </div>
+
+<ng-template #noTasks>
+  <div class="no-tasks">
+    <p>No tasks available. Please add a task.</p>
+  </div>
+</ng-template>

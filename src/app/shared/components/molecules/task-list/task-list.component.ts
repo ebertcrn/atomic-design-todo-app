@@ -1,58 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 
 import { TaskModel } from '../../../models/task.model';
 import { TaskService } from '../../../services/task.service';
 import { StorageService } from '../../../services/storage.service';
-import { CheckboxComponent } from '../../atoms/checkbox/checkbox.component';
+import { SnackbarService } from '../../../services/snackbar.service';
+import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent],
+  imports: [CommonModule, TaskItemComponent],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
+  @Input({ required: true }) form!: FormGroup;
+
   taskList: TaskModel[] = [];
 
   constructor(
     private readonly taskService: TaskService,
-    private readonly storageService: StorageService
+    private readonly storageService: StorageService,
+    private readonly snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
+    this.checkStorageForTasks();
     this.initializeSubscription();
-  }
-
-  completeTask(taskId: string): void {
-    this.taskService.getTasks().map((task) => {
-      if (task.id === taskId) {
-        task.isCompleted = true;
-      }
-    });
   }
 
   private get storedTasks(): TaskModel[] | null {
     return this.storageService.getItem('tasks');
   }
 
+  private checkStorageForTasks(): void {
+    const stored = this.storedTasks;
+    if (stored && stored.length > 0) {
+      for (const task of stored) {
+        this.taskService.addTask(task);
+      }
+    }
+  }
+
   private initializeSubscription(): void {
     this.taskService.tasks$.subscribe((tasks) => {
-      if (this.storedTasks && this.storedTasks.length > 0) {
-        this.taskList = this.storedTasks
-          .map((task) => {
-            if (!task.isCompleted) {
-              return task;
-            }
-            return undefined;
-          })
-          .filter((task) => task !== undefined);
-        // tenho que prevenir que tasks com isCompleted true sejam adicionadas `a lista.
-        // a lista taskList deve conter apenas tarefas pendentes.
-      }
-
-      this.taskList.push(...tasks);
+      this.taskList = tasks.filter((task) => !task.isCompleted);
+      // this.updateStorage(); // talvez usar um viewChild
+      console.log('Task list updated:', this.taskList);
     });
   }
 }

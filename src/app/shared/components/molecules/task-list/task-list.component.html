@@ -1,11 +1,15 @@
-<div *ngIf="taskList.length > 0; else noTasks" class="container">
-  <ng-container *ngFor="let task of taskList; let i = index">
-    <app-task-item [task]="task" [form]="form"></app-task-item>
+<div *ngIf="taskList.length > 0; else noTasks" class="task-list">
+  <ng-container *ngFor="let task of taskList">
+    <app-task-item
+      [task]="task"
+      [form]="form"
+      class="task-list__item"
+    ></app-task-item>
   </ng-container>
 </div>
 
 <ng-template #noTasks>
-  <div class="no-tasks">
+  <div class="task-list__no-tasks">
     <p>No tasks available. Please add a task.</p>
   </div>
 </ng-template>

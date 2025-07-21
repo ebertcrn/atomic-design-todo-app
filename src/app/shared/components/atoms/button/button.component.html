@@ -1,3 +1,87 @@
-<button mat-mini-fab (click)="onClick()" [disabled]="isDisabled">
-  <mat-icon>{{ icon }}</mat-icon>
-</button>
+<!-- <ng-container [ngSwitch]="type">
+  <button
+    *ngSwitchCase="buttonType.Flat"
+    mat-flat-button
+    (click)="onClick()"
+    [disabled]="isDisabled"
+  >
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <span *ngIf="label">{{ label }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.Raised"
+    mat-raised-button
+    (click)="onClick()"
+    [disabled]="isDisabled"
+  >
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <span *ngIf="label">{{ label }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.Fab"
+    mat-fab
+    (click)="onClick()"
+    [disabled]="isDisabled"
+  >
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.MiniFab"
+    mat-mini-fab
+    (click)="onClick()"
+    [disabled]="isDisabled"
+  >
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  </button>
+</ng-container> -->
+
+<ng-container [ngSwitch]="type">
+  <button
+    *ngSwitchCase="buttonType.Flat"
+    mat-flat-button
+    (click)="onClick()"
+    [disabled]="isDisabled"
+    class="button button--flat"
+  >
+    <mat-icon *ngIf="icon" class="button__icon">{{ icon }}</mat-icon>
+    <span *ngIf="label" class="button__label button__label--desktop">{{
+      label
+    }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.Raised"
+    mat-raised-button
+    (click)="onClick()"
+    [disabled]="isDisabled"
+    class="button button--raised"
+  >
+    <mat-icon *ngIf="icon" class="button__icon">{{ icon }}</mat-icon>
+    <span *ngIf="label" class="button__label button__label--desktop">{{
+      label
+    }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.Fab"
+    mat-fab
+    (click)="onClick()"
+    [disabled]="isDisabled"
+    class="button button--fab"
+  >
+    <mat-icon *ngIf="icon" class="button__icon">{{ icon }}</mat-icon>
+  </button>
+
+  <button
+    *ngSwitchCase="buttonType.MiniFab"
+    mat-mini-fab
+    (click)="onClick()"
+    [disabled]="isDisabled"
+    class="button button--minifab"
+  >
+    <mat-icon *ngIf="icon" class="button__icon">{{ icon }}</mat-icon>
+  </button>
+</ng-container>

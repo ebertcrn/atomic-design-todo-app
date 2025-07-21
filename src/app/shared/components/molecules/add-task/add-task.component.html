@@ -1,8 +1,0 @@
-<form [formGroup]="form">
-  <app-input [control]="taskControl" [label]="label"></app-input>
-  <app-button
-    [isDisabled]="taskControl.invalid"
-    [icon]="'add'"
-    (click)="addTask()"
-  ></app-button>
-</form>

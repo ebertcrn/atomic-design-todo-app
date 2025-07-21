@@ -1,9 +1,16 @@
-<form [formGroup]="form">
-  <app-input [control]="editingTaskCtrl"></app-input>
-  <app-button [icon]="'close'" (onClickButton)="cancelEdit()"></app-button>
-  <app-button
-    [icon]="'check'"
-    [isDisabled]="editingTaskCtrl.invalid"
-    (onClickButton)="saveTaskEdit(task)"
-  ></app-button>
+<form [formGroup]="form" class="container">
+  <app-input [control]="editingTaskCtrl" class="container__input"></app-input>
+  <div class="container__buttons">
+    <app-button
+      [icon]="cancelButtonIcon"
+      [type]="buttonType"
+      (onClickButton)="cancelEdit()"
+    ></app-button>
+    <app-button
+      [icon]="saveButtonIcon"
+      [type]="buttonType"
+      [isDisabled]="editingTaskCtrl.invalid"
+      (onClickButton)="saveTaskEdit(task)"
+    ></app-button>
+  </div>
 </form>

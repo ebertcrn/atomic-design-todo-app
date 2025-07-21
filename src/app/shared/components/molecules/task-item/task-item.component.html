@@ -4,15 +4,20 @@
       [form]="form"
       [task]="task"
       (onCancelEdit)="cancelEdit()"
+      class="task-item__edit"
     ></app-task-item-edit>
   </ng-container>
 
   <ng-template #viewMode>
-    <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
-    {{ task.name }}
+    <div class="task-item__content">
+      <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
+      <span class="task-item__name">{{ task.name }}</span>
+    </div>
     <app-button
-      [icon]="'edit'"
+      [icon]="buttonIcon"
+      [type]="buttonType"
       (onClickButton)="openTaskEdit(task)"
+      class="task-item__edit-btn"
     ></app-button>
   </ng-template>
 </div>

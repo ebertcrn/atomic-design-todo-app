@@ -5,7 +5,6 @@ import { FormGroup } from '@angular/forms';
 import { TaskModel } from '../../../models/task.model';
 import { TaskService } from '../../../services/task.service';
 import { StorageService } from '../../../services/storage.service';
-import { SnackbarService } from '../../../services/snackbar.service';
 import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
@@ -22,8 +21,7 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private readonly taskService: TaskService,
-    private readonly storageService: StorageService,
-    private readonly snackbarService: SnackbarService
+    private readonly storageService: StorageService
   ) {}
 
   ngOnInit(): void {

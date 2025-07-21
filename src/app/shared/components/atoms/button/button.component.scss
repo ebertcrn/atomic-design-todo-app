@@ -1,0 +1,38 @@
+// @media screen and (min-width: 767px) {
+// }
+// // ToDo: se for no mobile, aparecer somente o icone
+// // Se for no desktop, icone + label
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    font-size: 1.2rem;
+  }
+
+  &__label {
+    margin-left: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+
+    &--desktop {
+      display: inline;
+    }
+  }
+}
+
+// Esconde a label no mobile
+@media (max-width: 767px) {
+  .button__label--desktop {
+    display: none;
+  }
+}
+
+:host ::ng-deep {
+  .mat-icon {
+    align-content: center;
+  }
+  // mat-icon notranslate button__icon material-icons mat-ligature-font mat-icon-no-color
+}

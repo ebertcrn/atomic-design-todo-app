@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "modern-css-reset/dist/reset.min.css";
+@import "./styles/variables.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}

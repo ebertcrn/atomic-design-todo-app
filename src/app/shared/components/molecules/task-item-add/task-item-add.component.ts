@@ -7,18 +7,24 @@ import { TaskService } from '../../../services/task.service';
 import { TaskModel } from '../../../models/task.model';
 import { StorageService } from '../../../services/storage.service';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { ButtonTypeEnum, IconsEnum } from '../../atoms/button/button.enum';
 
 @Component({
-  selector: 'app-add-task',
+  selector: 'app-task-item-add',
   standalone: true,
   imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
-  templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss'],
+  templateUrl: './task-item-add.component.html',
+  styleUrls: ['./task-item-add.component.scss'],
 })
-export class AddTaskComponent {
+export class TaskItemAddComponent implements OnInit {
   @Input({ required: true }) form!: FormGroup;
 
-  readonly label = 'New task';
+  buttonLabel: string | undefined = undefined;
+  buttonType: ButtonTypeEnum = ButtonTypeEnum.Flat;
+
+  readonly buttonIcon = IconsEnum.Add;
+  readonly inputLabel = 'New task';
+  private resizeListener = () => this.updateButtonConfiguration();
 
   constructor(
     private readonly taskService: TaskService,
@@ -26,12 +32,27 @@ export class AddTaskComponent {
     private readonly snackbarService: SnackbarService
   ) {}
 
+  ngOnInit(): void {
+    this.updateButtonConfiguration();
+    window.addEventListener('resize', this.resizeListener);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.resizeListener);
+  }
+
+  private updateButtonConfiguration(): void {
+    this.buttonType =
+      window.innerWidth <= 767 ? ButtonTypeEnum.MiniFab : ButtonTypeEnum.Flat;
+    this.buttonLabel = window.innerWidth <= 767 ? undefined : 'Add';
+  }
+
   get taskControl(): FormControl<string> {
     return this.form.get('newTask') as FormControl<string>;
   }
 
   addTask(): void {
-    if (this.taskControl.invalid) {
+    if (!this.taskControl.value) {
       return;
     }
 
@@ -44,7 +65,7 @@ export class AddTaskComponent {
     this.taskService.addTask(newTask);
     this.updateTasksInStorage();
     this.taskControl.reset();
-    this.snackbarService.open('Task added');
+    this.snackbarService.open('Task added!');
   }
 
   private updateTasksInStorage(): void {

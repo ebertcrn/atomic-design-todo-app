@@ -8,12 +8,12 @@ import {
 } from '@angular/forms';
 
 import { TaskListComponent } from '../../molecules/task-list/task-list.component';
-import { AddTaskComponent } from '../../molecules/add-task/add-task.component';
+import { TaskItemAddComponent } from '../../molecules/task-item-add/task-item-add.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [TaskListComponent, AddTaskComponent, ReactiveFormsModule],
+  imports: [TaskListComponent, TaskItemAddComponent, ReactiveFormsModule],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })

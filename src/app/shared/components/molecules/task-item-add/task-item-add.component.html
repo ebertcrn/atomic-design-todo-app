@@ -1,0 +1,14 @@
+<form [formGroup]="form" class="container">
+  <app-input
+    [control]="taskControl"
+    [label]="inputLabel"
+    class="container__input"
+  ></app-input>
+  <app-button
+    [isDisabled]="taskControl.invalid"
+    [type]="buttonType"
+    [icon]="buttonIcon"
+    [label]="buttonLabel"
+    (click)="addTask()"
+  ></app-button>
+</form>

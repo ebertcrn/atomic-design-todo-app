@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +8,8 @@ import { CheckboxComponent } from '../../atoms/checkbox/checkbox.component';
 import { StorageService } from '../../../services/storage.service';
 import { TaskService } from '../../../services/task.service';
 import { TaskItemEditComponent } from '../task-item-edit/task-item-edit.component';
+import { ButtonTypeEnum, IconsEnum } from '../../atoms/button/button.enum';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-task-item',
@@ -27,9 +29,13 @@ export class TaskItemComponent {
 
   editingTaskId: string | null = null;
 
+  readonly buttonType = ButtonTypeEnum.MiniFab;
+  readonly buttonIcon = IconsEnum.Edit;
+
   constructor(
     private readonly storageService: StorageService,
-    private readonly taskService: TaskService
+    private readonly taskService: TaskService,
+    private readonly snackbarService: SnackbarService
   ) {}
 
   get editingTaskCtrl(): FormControl<string> {
@@ -41,6 +47,7 @@ export class TaskItemComponent {
       this.taskService.completeTask(taskId);
       this.updateStorage();
     }, 1000);
+    this.snackbarService.open('Task completed!');
   }
 
   openTaskEdit(task: TaskModel): void {

@@ -10,15 +10,15 @@
 
   <ng-template #viewMode>
     <div class="task-item__content">
-      <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
+      <app-button
+        [icon]="buttonIcon"
+        [type]="buttonType"
+        (onClickButton)="openTaskEdit(task)"
+        class="task-item__edit-btn"
+      ></app-button>
       <span class="task-item__name">{{ task.name }}</span>
     </div>
-    <app-button
-      [icon]="buttonIcon"
-      [type]="buttonType"
-      (onClickButton)="openTaskEdit(task)"
-      class="task-item__edit-btn"
-    ></app-button>
+    <app-checkbox (onCheckChange)="completeTask(task.id)"></app-checkbox>
   </ng-template>
 </div>
 

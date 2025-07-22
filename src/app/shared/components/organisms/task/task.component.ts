@@ -65,8 +65,9 @@ export class TaskComponent implements OnInit {
     ]).subscribe(([showCompleted, tasks]) => {
       this.showCompletedTasks = showCompleted;
       this.taskList = tasks.filter((task) => !task.isCompleted);
-      this.completedTaskList = tasks.filter((task) => task.isCompleted);
-      console.log(this.completedTaskList);
+      this.completedTaskList = tasks
+        .filter((task) => task.isCompleted)
+        .reverse();
     });
   }
 

@@ -1,4 +1,16 @@
 <div class="container">
-  <app-task-item-add [form]="taskForm"></app-task-item-add>
-  <app-task-list [form]="taskForm"></app-task-list>
+  <ng-container *ngIf="!showCompletedTasks; else completedTasks">
+    <app-task-item-add [form]="taskForm"></app-task-item-add>
+    <app-task-list [form]="taskForm" [taskList]="taskList"></app-task-list>
+  </ng-container>
+
+  <ng-template #completedTasks>
+    <div class="completed">
+      <span class="completed__title">Completed Tasks</span>
+    </div>
+    <app-task-list
+      [form]="taskForm"
+      [taskList]="completedTaskList"
+    ></app-task-list>
+  </ng-template>
 </div>

@@ -2,20 +2,40 @@
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+
+  .completed {
+    align-self: center;
+    padding: 12px 16px;
+
+    &__title {
+      font-weight: 500;
+    }
+  }
 }
 
 // Tablet
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
-    border: 1px solid red;
+    border: 1px solid var(--white);
     margin: 0 24px;
+    padding-bottom: 50px;
+
+    .completed {
+      align-self: center;
+      padding: 12px 16px;
+
+      &__title {
+        font-weight: 500;
+      }
+    }
   }
 }
 
 // Desktop
-@media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1024px) {
   .container {
-    border: 2px solid red;
+    border: 1px solid var(--white);
     margin: 0 48px;
+    padding-bottom: 50px;
   }
 }

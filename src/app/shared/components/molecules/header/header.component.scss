@@ -1,7 +1,7 @@
 .container {
   align-items: center;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: #9c4f4f;
+  border-bottom: 1px solid var(--primary-color);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -11,12 +11,74 @@
 }
 
 .title {
-  font-size: 24px;
-  color: #333;
+  font-size: 18px;
+  color: var(--primary-color);
 }
 
-@media screen and (min-width: 767px) {
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar-overlay__backdrop {
+  flex-basis: 0;
+  flex-grow: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  flex-basis: 80vw;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--color-bg);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+  margin-left: 0; // não precisa mais de auto
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
   .container {
     padding: 24px 48px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .sidebar-overlay__backdrop {
+    width: 40vw;
+  }
+
+  .sidebar-menu {
+    flex-basis: 60vw;
+    max-width: 600px;
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) {
+  .container {
+    padding: 16px 48px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .menu,
+  .sidebar-overlay,
+  .sidebar-menu {
+    display: none !important;
   }
 }

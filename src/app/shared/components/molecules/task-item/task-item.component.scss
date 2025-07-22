@@ -17,9 +17,9 @@
   }
 
   &__name {
-    font-size: 1rem;
-    color: #2d2d2d;
-    word-break: break-word;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 18px;
   }
 
   &__edit-btn {
@@ -35,5 +35,5 @@
 }
 
 // Desktop
-@media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1024px) {
 }

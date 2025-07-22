@@ -1,4 +1,4 @@
-<div *ngIf="!task.isCompleted" class="task-item">
+<div *ngIf="!task.isCompleted; else completedTask" class="task-item">
   <ng-container *ngIf="editingTaskId === task.id && form; else viewMode">
     <app-task-item-edit
       [form]="form"
@@ -21,3 +21,11 @@
     ></app-button>
   </ng-template>
 </div>
+
+<ng-template #completedTask>
+  <div class="task-item">
+    <div class="task-item__content">
+      <span class="task-item__name">{{ task.name }}</span>
+    </div>
+  </div>
+</ng-template>

@@ -1,7 +1,13 @@
 .button {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+
+  &:not(:disabled) {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    cursor: pointer;
+  }
 
   &__icon {
     font-size: 1.2rem;

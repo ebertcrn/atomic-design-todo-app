@@ -10,6 +10,9 @@ export class TaskService {
   private tasks = new BehaviorSubject<TaskModel[]>([]);
   tasks$ = this.tasks.asObservable();
 
+  private showCompletedTasks = new BehaviorSubject<boolean>(false);
+  showCompletedTasks$ = this.showCompletedTasks.asObservable();
+
   constructor() {}
 
   addTask(task: TaskModel): void {
@@ -36,5 +39,9 @@ export class TaskService {
     });
 
     this.tasks.next(updatedTasks);
+  }
+
+  showCompletedTasksFn(show: boolean): void {
+    this.showCompletedTasks.next(show);
   }
 }

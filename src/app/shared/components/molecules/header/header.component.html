@@ -1,3 +1,26 @@
 <div class="container">
   <h1 class="title">Atomic Design To-Do List App</h1>
+  <button
+    mat-icon-button
+    *ngIf="!isDesktop; else desktopMenu"
+    (click)="openMenu()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ng-template #desktopMenu>
+    <nav class="header-nav">
+      <button mat-button (click)="showTasks(false)">All Tasks</button>
+      <button mat-button (click)="showTasks(true)">Completed Tasks</button>
+    </nav>
+  </ng-template>
+</div>
+
+<div *ngIf="sidebarOpen" @overlayFade class="sidebar-overlay">
+  <div class="sidebar-overlay__backdrop" (click)="closeMenu()"></div>
+  <app-side-bar-menu
+    @sidebarSlide
+    (closeSidebar)="closeMenu()"
+    (click)="$event.stopPropagation()"
+    class="sidebar-menu"
+  ></app-side-bar-menu>
 </div>

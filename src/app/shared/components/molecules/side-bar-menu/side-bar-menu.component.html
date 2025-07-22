@@ -1,0 +1,19 @@
+<div class="side-bar-menu__header">
+  <span>Menu</span>
+  <button class="side-bar-menu__close" (click)="closeSidebar.emit()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+<!-- <nav class="side-bar-menu__nav">
+  <button (click)="showAllTasks()" class="side-bar-menu__nav-btn">
+    All Tasks
+  </button>
+  <button (click)="showCompletedTasks()" class="side-bar-menu__nav-btn">
+    Completed Tasks
+  </button>
+</nav> -->
+
+<nav class="side-bar-menu__nav">
+  <button mat-button (click)="showTasks(false)">All Tasks</button>
+  <button mat-button (click)="showTasks(true)">Completed Tasks</button>
+</nav>

@@ -1,8 +1,40 @@
 @import "modern-css-reset/dist/reset.min.css";
-@import "./styles/variables.scss";
+@import "./styles/colors.scss";
 
 body {
-  font-family: var(--font-family);
+  font-family: Roboto, sans-serif;
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--primary-color);
+}
+
+// Button color overrides
+.mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-small-container-color: var(--primary-color) !important;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: var(--primary-color);
+}
+
+// Checkbox color overrides
+.mdc-checkbox__background {
+  border-color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: var(--color-bg) !important;
+}
+
+.mat-mdc-input-element {
+  caret-color: var(--primary-color) !important;
+}
+
+.mdc-floating-label {
+  color: var(--primary-color) !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-line-ripple::after {
+  border-bottom-color: var(--primary-color) !important;
 }

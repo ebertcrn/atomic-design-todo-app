@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,14 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { combineLatest } from 'rxjs';
 
 import { TaskListComponent } from '../../molecules/task-list/task-list.component';
 import { TaskItemAddComponent } from '../../molecules/task-item-add/task-item-add.component';
 import { TaskModel } from '../../../models/task.model';
 import { TaskService } from '../../../services/task.service';
 import { StorageService } from '../../../services/storage.service';
-import { CommonModule } from '@angular/common';
-import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-task',

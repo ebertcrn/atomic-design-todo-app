@@ -1,8 +1,3 @@
-// @media screen and (min-width: 767px) {
-// }
-// // ToDo: se for no mobile, aparecer somente o icone
-// // Se for no desktop, icone + label
-
 .button {
   display: flex;
   align-items: center;
@@ -23,7 +18,6 @@
   }
 }
 
-// Esconde a label no mobile
 @media (max-width: 767px) {
   .button__label--desktop {
     display: none;
@@ -34,5 +28,4 @@
   .mat-icon {
     align-content: center;
   }
-  // mat-icon notranslate button__icon material-icons mat-ligature-font mat-icon-no-color
 }

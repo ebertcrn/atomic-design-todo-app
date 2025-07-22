@@ -45,8 +45,6 @@ export class TaskListComponent implements OnInit {
   private initializeSubscription(): void {
     this.taskService.tasks$.subscribe((tasks) => {
       this.taskList = tasks.filter((task) => !task.isCompleted);
-      // this.updateStorage(); // talvez usar um viewChild
-      console.log('Task list updated:', this.taskList);
     });
   }
 }

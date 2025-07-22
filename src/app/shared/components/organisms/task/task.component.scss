@@ -1,0 +1,21 @@
+.container {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    border: 1px solid red;
+    margin: 0 24px;
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    border: 2px solid red;
+    margin: 0 48px;
+  }
+}

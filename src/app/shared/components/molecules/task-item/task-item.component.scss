@@ -26,3 +26,14 @@
     margin-left: 8px;
   }
 }
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
+  .task-item {
+    padding: 24px;
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) and (max-width: 1439px) {
+}

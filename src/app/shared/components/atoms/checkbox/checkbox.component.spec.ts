@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { By } from '@angular/platform-browser';
 
 import { CheckboxComponent } from './checkbox.component';
-import { By } from '@angular/platform-browser';
 
 describe('CheckboxComponent', () => {
   let component: CheckboxComponent;

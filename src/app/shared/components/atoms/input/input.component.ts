@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  @Input() control!: FormControl<string>;
+  @Input({ required: true }) control!: FormControl<string>;
   @Input() label?: string;
 
   constructor() {}

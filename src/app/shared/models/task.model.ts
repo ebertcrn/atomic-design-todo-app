@@ -1,5 +1,5 @@
 export interface TaskModel {
-  id: string;
+  readonly id: string;
   name: string;
   isCompleted: boolean;
 }

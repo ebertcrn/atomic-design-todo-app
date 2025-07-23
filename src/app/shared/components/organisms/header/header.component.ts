@@ -4,7 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { SideBarMenuComponent } from '../side-bar-menu/side-bar-menu.component';
+import { SideBarMenuComponent } from '../../molecules/side-bar-menu/side-bar-menu.component';
 import { TaskService } from '../../../services/task.service';
 
 @Component({
